@@ -38,7 +38,6 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-
     steps:
       - name: Download Artifact
         uses: actions/download-artifact@master
@@ -46,7 +45,8 @@ jobs:
           name: web-build
       - name: Deploy to GH Pages
         run: |
-          cd plov/build/web
+          ls -a
+          cd web
           git init 
           git config --global user.email chunlee.thong@gmail.com
           git config --global user.name chunlee-thong 
