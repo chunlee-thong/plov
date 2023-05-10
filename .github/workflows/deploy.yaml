@@ -50,7 +50,7 @@ jobs:
           git config --global user.email chunlee.thong@gmail.com
           git config --global user.name chunlee-thong 
           git status
-          git remote add origin https://${{secrets.GH_DEPLOY}}@github.com/chunlee-thong/plov.git
+          git remote add origin git@github.com:chunlee-thong/plov.git
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
