@@ -7,6 +7,8 @@ import 'package:plov/src/features/auth/forget_password_page.dart';
 import 'package:plov/src/features/auth/login_page.dart';
 import 'package:plov/src/features/auth/register_page.dart';
 import 'package:plov/src/features/home/home_page.dart';
+import 'package:plov/src/features/products/product_detail_page.dart';
+import 'package:plov/src/features/products/product_list_page.dart';
 import 'package:plov/src/features/users/user_list_page.dart';
 import 'package:provider/provider.dart';
 import 'package:skadi/skadi.dart';
@@ -37,6 +39,20 @@ final goRouter = GoRouter(
       path: RoutePath.home,
       builder: (context, state) => const HomePage(),
       routes: [
+        GoRoute(
+          path: RoutePath.products,
+          builder: (context, state) => const ProductListPage(),
+          routes: [
+            GoRoute(
+              path: ":productId",
+              builder: (context, state) {
+                String? productId = state.pathParameters['productId'];
+                infoLog("Extra object: ", state.extra);
+                return ProductDetailPage(productId: productId!);
+              },
+            )
+          ],
+        ),
         GoRoute(
           path: RoutePath.dialog,
           pageBuilder: (context, state) => const DialogPage(

@@ -3,6 +3,7 @@ class RoutePath {
   static const String accounts = "account";
   static const String sheet = "sheet";
   static const String dialog = "dialog";
+  static const String products = "products";
 
   ///Non auth
   static const String login = "/login";

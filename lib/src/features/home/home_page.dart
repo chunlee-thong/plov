@@ -41,6 +41,13 @@ class _HomePageState extends State<HomePage> {
             const SpaceY(24),
             ElevatedButton(
               onPressed: () {
+                goRouter.push("/${RoutePath.products}");
+              },
+              child: const Text("View products"),
+            ),
+            const SpaceY(24),
+            ElevatedButton(
+              onPressed: () {
                 goRouter.push("/${RoutePath.dialog}");
               },
               child: const Text("Show Dialog"),
