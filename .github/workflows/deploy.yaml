@@ -46,7 +46,7 @@ jobs:
           name: web-build
       - name: Deploy to GH Pages
         run: |
-          cd build/web
+          cd plov/build/web
           git init 
           git config --global user.email chunlee.thong@gmail.com
           git config --global user.name chunlee-thong 
