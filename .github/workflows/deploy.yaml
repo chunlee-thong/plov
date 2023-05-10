@@ -47,12 +47,9 @@ jobs:
       - name: Deploy to GH Pages
         run: |
           cd build/web
-          git init
-          # type configurations: your user.email and user.name followed lines 
-          # git config --global user.email your_email 
-          # git config --global user.name your_name 
-          git config --global user.email ranubhardwaj89@gmail.com
-          git config --global user.name himanshusharma89
+          git init 
+          git config --global user.email chunlee.thong@gmail.com
+          git config --global user.name chunlee-thong 
           git status
           git remote add origin https://${{secrets.GH_DEPLOY}}@github.com/chunlee-thong/plov.git
           git checkout -b gh-pages
