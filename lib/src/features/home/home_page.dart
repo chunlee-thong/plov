@@ -3,6 +3,7 @@ import 'package:plov/src/core/controller/auth_controller.dart';
 import 'package:plov/src/core/router/path.dart';
 import 'package:plov/src/core/router/router.dart';
 import 'package:provider/provider.dart';
+import 'package:skadi/skadi.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,11 +29,30 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            goRouter.push("/${RoutePath.accounts}");
-          },
-          child: const Text("View accounts"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                goRouter.push("/${RoutePath.accounts}");
+              },
+              child: const Text("View accounts"),
+            ),
+            const SpaceY(24),
+            ElevatedButton(
+              onPressed: () {
+                goRouter.push("/${RoutePath.dialog}");
+              },
+              child: const Text("Show Dialog"),
+            ),
+            const SpaceY(24),
+            ElevatedButton(
+              onPressed: () {
+                goRouter.push("/${RoutePath.sheet}");
+              },
+              child: const Text("Show BottomSheet"),
+            ),
+          ],
         ),
       ),
     );
