@@ -6,26 +6,29 @@ bool _loggedIn = false;
 class AuthController {
   bool loggedIn = false;
 
+  static late SharedPreferences _sharedPreferences;
+
   AuthController() {
     loggedIn = _loggedIn;
     debugLog("Auth?", loggedIn);
   }
 
-  Future login() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString("token", "jwt");
+  Future login(String email, String password) async {
+    if (email != "admin@email.com" && password != "admin") {
+      throw "Incorrect email or password";
+    }
+    _sharedPreferences.setString("token", "jwt");
     loggedIn = true;
   }
 
   Future logout() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.clear();
+    _sharedPreferences.clear();
     loggedIn = false;
   }
 
   static Future init() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    String? token = sharedPreferences.getString("token");
+    _sharedPreferences = await SharedPreferences.getInstance();
+    String? token = _sharedPreferences.getString("token");
     _loggedIn = token != null;
   }
 }

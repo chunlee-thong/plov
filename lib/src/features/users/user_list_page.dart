@@ -23,7 +23,7 @@ class _UserListPageState extends State<UserListPage>
   late TabController tabController;
 
   Future<int> updateData() async {
-    await SkadiUtils.wait();
+    await SkadiUtils.wait(1500);
     return Faker().randomGenerator.integer(99);
   }
 

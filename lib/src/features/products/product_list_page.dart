@@ -22,7 +22,7 @@ class _ProductListPageState extends State<ProductListPage> {
       appBar: AppBar(title: const Text("Product")),
       body: ListView.builder(
         itemCount: 1,
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.zero,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             onTap: () {
@@ -30,6 +30,7 @@ class _ProductListPageState extends State<ProductListPage> {
             },
             leading: const CircleAvatar(child: Icon(Icons.food_bank)),
             title: const Text("Soap"),
+            contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
             trailing: const Text("\$ 23.5"),
           );
         },

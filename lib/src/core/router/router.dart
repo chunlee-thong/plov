@@ -81,7 +81,7 @@ final goRouter = GoRouter(
               path: ":accId",
               pageBuilder: (context, state) {
                 String? accountNumber = state.pathParameters['accId'];
-                String? type = state.queryParameters['type'];
+                String? type = state.uri.queryParameters['type'];
                 return NoTransitionPage(
                   child: UserListPage(
                     accountNumber: accountNumber,
@@ -97,7 +97,7 @@ final goRouter = GoRouter(
   ],
   redirect: (context, state) {
     final auth = context.read<AuthController>();
-    final path = state.location;
+    final path = state.uri.toString();
     if (auth.loggedIn) {
       if (nonAuthPaths.contains(path)) {
         return RoutePath.home;
