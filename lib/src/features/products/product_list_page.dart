@@ -21,14 +21,18 @@ class _ProductListPageState extends State<ProductListPage> {
     return Scaffold(
       appBar: AppBar(title: const Text("Product")),
       body: ListView.builder(
-        itemCount: 1,
+        itemCount: 200,
         padding: EdgeInsets.zero,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             onTap: () {
               goRouter.push("/products/${index + 1}", extra: {"title": "Soap"});
             },
-            leading: const CircleAvatar(child: Icon(Icons.food_bank)),
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(
+                SkadiUtils.picsumImage(1720 + index, 1720 + index),
+              ),
+            ),
             title: const Text("Soap"),
             contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
             trailing: const Text("\$ 23.5"),

@@ -4,6 +4,7 @@ import 'package:oktoast/oktoast.dart';
 import 'package:plov/src/core/controller/auth_controller.dart';
 import 'package:plov/src/core/router/router.dart';
 import 'package:provider/provider.dart';
+import 'package:skadi/skadi.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -35,11 +36,13 @@ class _MyAppState extends State<MyApp> {
           // routeInformationParser: goRouter.routeInformationParser,
           // backButtonDispatcher: goRouter.backButtonDispatcher,
           debugShowCheckedModeBanner: false,
+
           builder: (context, child) {
             materialContext = context;
-            return child!;
+            return LoadingOverlayProvider.builder(child: child!);
           },
           theme: ThemeData(
+            useMaterial3: true,
             inputDecorationTheme: const InputDecorationTheme(
               border: OutlineInputBorder(),
             ),

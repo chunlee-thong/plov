@@ -25,6 +25,21 @@ class _LoginPageState extends State<LoginPage> with SkadiFormMixin, DeferDispose
   Widget build(BuildContext context) {
     return KeyboardDismiss(
       child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () async {
+                LoadingOverlayProvider.toggle(true);
+                await SkadiUtils.wait();
+                await context.read<AuthController>().login("admin@email.com", "admin");
+                LoadingOverlayProvider.toggle(false);
+                goRouter.go(RoutePath.home);
+                print("Done");
+              },
+              icon: const Icon(Icons.refresh),
+            ),
+          ],
+        ),
         body: Center(
           child: Card(
             child: SizedBox(

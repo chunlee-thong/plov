@@ -48,6 +48,7 @@ class _UserListPageState extends State<UserListPage>
 
   @override
   void dispose() {
+    print("Dispose user list");
     manager.dispose();
     tabController.dispose();
     super.dispose();
@@ -56,14 +57,12 @@ class _UserListPageState extends State<UserListPage>
   @override
   void initState() {
     init();
-    debugLog("Recreate");
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    debugLog("Rebuild");
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.accountNumber != null ? widget.accountNumber! : "Users"),

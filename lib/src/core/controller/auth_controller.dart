@@ -9,8 +9,8 @@ class AuthController {
   static late SharedPreferences _sharedPreferences;
 
   AuthController() {
+    print("Auth controller constructor");
     loggedIn = _loggedIn;
-    debugLog("Auth?", loggedIn);
   }
 
   Future login(String email, String password) async {
@@ -30,5 +30,6 @@ class AuthController {
     _sharedPreferences = await SharedPreferences.getInstance();
     String? token = _sharedPreferences.getString("token");
     _loggedIn = token != null;
+    debugLog("Auth?", _loggedIn);
   }
 }

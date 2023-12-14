@@ -95,6 +95,9 @@ final goRouter = GoRouter(
       ],
     ),
   ],
+  observers: [
+    SkadiRouteObserver(),
+  ],
   redirect: (context, state) {
     final auth = context.read<AuthController>();
     final path = state.uri.toString();
