@@ -26,7 +26,7 @@ jobs:
         run: flutter config --enable-web
 
       - name: Build Flutter Web
-        run: flutter build web --base-href="/plov/"
+        run: flutter build web --web-renderer html --base-href="/plov/"
 
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com

@@ -75,7 +75,27 @@ final goRouter = GoRouter(
         ),
         GoRoute(
           path: RoutePath.accounts,
-          builder: (context, state) => const UserListPage(),
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const UserListPage(),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                debugLog(animation.value);
+                if (animation.status == AnimationStatus.reverse) {
+                  return SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(1.0, 0.0),
+                      end: Offset.zero,
+                    ).animate(animation),
+                    child: child,
+                  );
+                }
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+            );
+          },
           routes: [
             GoRoute(
               path: ":accId",
